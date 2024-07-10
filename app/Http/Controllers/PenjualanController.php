@@ -17,7 +17,7 @@ class PenjualanController extends Controller
     public function index()
     {
         $dataPenjualan = Penjualan::with('user')->get();
-        return view ('penjualan.index', compact('dataPenjualan'));
+        return view('penjualan.index', compact('dataPenjualan'));
     }
 
     /**
@@ -26,7 +26,11 @@ class PenjualanController extends Controller
     public function create()
     {
         $kode_transaksi = Penjualan::orderBy('id', 'desc')->first();
-        $urutan = $kode_transaksi->id;
+        if(isset($kode_transaksi)){
+            $urutan = $kode_transaksi->id;
+        } else {
+            $urutan = 0;
+        }
         $huruf = "TR-";
         $urutan++;
         $kode_transaksi = $huruf . date('dmY') . sprintf("%03s", $urutan);
@@ -44,22 +48,22 @@ class PenjualanController extends Controller
         $penjualan = Penjualan::create([
             'id_user' => $request->id_user,
             'kode_transaksi' => $request->kode_transaksi,
-            'tanggal_transaksi' => $request->tanggal_transaksi
+            'tanggal_transaksi' => $request->tanggal_transaksi,
+            'nominal_bayar' => $request->nominal_bayar,
+            'kembalian' => $request->kembalian,          // akses langsung, bukan dari array
         ]);
         foreach ($request->id_barang as $index => $id_barang) {
             DetailPenjualan::create([
                 'id_penjualan' => $penjualan->id,
                 'id_barang' => $id_barang,
                 'jumlah' => $request->jumlah[$index],
-                'qty' => $request->qty[$index],
                 'harga' => $request->harga[$index],
                 'total_harga' => $request->total_harga[$index],
-                'nominal_bayar' => $request->nominal_bayar[$index],
-                'kembalian' => $request->kembalian[$index],
             ]);
-        };
-        // Alert::success('Success', 'Data Added Successfully');
-        return redirect()->to('penjualan');
+        }
+        return redirect()->route('penjualan.index')->with('success', 'Penjualan berhasil ditambahkan');
+        // Simpan data penjualan di tabel utama
+
     }
 
     /**

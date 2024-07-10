@@ -356,7 +356,7 @@ $barang = Barang::get();
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script>
+    <!-- <script>
         $('.btn-add').click(function() {
             let tbody = $('tbody');
             let newTr = "<tr>";
@@ -377,6 +377,7 @@ $barang = Barang::get();
             newTr += "</tr>";
             tbody.append(newTr);
         });
-    </script>
+    </script> -->
+    
   </body>
 </html>

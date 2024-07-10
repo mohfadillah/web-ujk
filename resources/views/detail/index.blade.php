@@ -36,11 +36,8 @@
                         <th>Nama</th>
                         <th>Nama Barang</th>
                         <th>Jumlah</th>
-                        <th>Quantity</th>
                         <th>Harga</th>
                         <th>Total Harga</th>
-                        <th>Bayar</th>
-                        <th>Kembali</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,11 +47,8 @@
                             <td>{{ $detail->nama_lengkap }}</td>
                             <td>{{ $detail->nama_barang }}</td>
                             <td>{{ $detail->jumlah }}</td>
-                            <td>{{ $detail->qty }}</td>
                             <td>{{ $detail->harga }}</td>
                             <td>{{ $detail->total_harga }}</td>
-                            <td>{{ $detail->nominal_bayar }}</td>
-                            <td>{{ $detail->kembalian }}</td>
                         </tr>
                     @endforeach
                 </tbody>

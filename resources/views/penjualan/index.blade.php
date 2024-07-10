@@ -12,6 +12,8 @@
                     <th>Nama Pengguna</th>
                     <th>Kode Transaksi</th>
                     <th>Tanggal Transaksi</th>
+                    <th>Nominal Bayar</th>
+                    <th>Kembalian</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -22,6 +24,8 @@
                         <td>{{ $dp->user->nama_lengkap }}</td>
                         <td>{{ $dp->kode_transaksi }}</td>
                         <td>{{ $dp->tanggal_transaksi }}</td>
+                        <td>{{ $dp->nominal_bayar }}</td>
+                        <td>{{ $dp->kembalian }}</td>
                         <td>
                             <a href="{{ route('detail.show', $dp->id) }}"
                                 class="btn btn-sm btn-warning text-darkblue">
