@@ -24,8 +24,8 @@
                         <td>{{ $dp->user->nama_lengkap }}</td>
                         <td>{{ $dp->kode_transaksi }}</td>
                         <td>{{ $dp->tanggal_transaksi }}</td>
-                        <td>{{ $dp->nominal_bayar }}</td>
-                        <td>{{ $dp->kembalian }}</td>
+                        <td>{{'Rp ' . number_format($dp->nominal_bayar) }}</td>
+                        <td>{{'Rp ' . number_format($dp->kembalian) }}</td>
                         <td>
                             <a href="{{ route('detail.show', $dp->id) }}"
                                 class="btn btn-sm btn-warning text-darkblue">

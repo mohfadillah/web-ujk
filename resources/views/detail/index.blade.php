@@ -32,7 +32,6 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        {{-- <th>No.</th> --}}
                         <th>Nama</th>
                         <th>Nama Barang</th>
                         <th>Jumlah</th>
@@ -42,13 +41,12 @@
                 </thead>
                 <tbody>
                     @foreach ($details as $detail)
-                        {{-- @dd($details) --}}
                         <tr>
                             <td>{{ $detail->nama_lengkap }}</td>
                             <td>{{ $detail->nama_barang }}</td>
                             <td>{{ $detail->jumlah }}</td>
-                            <td>{{ $detail->harga }}</td>
-                            <td>{{ $detail->total_harga }}</td>
+                            <td>{{'Rp ' . number_format($detail->harga, 2, ',', '.') }}</td>
+                            <td>{{'Rp ' . number_format($detail->total_harga, 2, ',', '.') }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -58,12 +56,10 @@
         <a class="btn btn-danger btn-sm" id="back" href="{{ url()->previous() }}">Back</a>
         <script>
             function printData() {
-                // Menyembunyikan tombol cetak
                 var printButton = document.getElementById('print');
                 var backButton = document.getElementById('back');
                 printButton.style.display = 'none';
                 backButton.style.display = 'none';
-                // Memanggil window.print() untuk menampilkan dialog pencetakan
                 window.print();
             }
         </script>
@@ -71,3 +67,4 @@
 
     </html>
 @endsection
+``

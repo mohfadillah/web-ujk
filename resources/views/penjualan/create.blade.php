@@ -9,9 +9,7 @@
         <select id="" class="form-control" name="id_user">
             <option value="">Select User</option>
             @foreach ($users as $user)
-                <option value="{{ $user->id }}">
-                    {{ $user->nama_lengkap }}
-                </option>
+                <option value="{{ $user->id }}">{{ $user->nama_lengkap }}</option>
             @endforeach
         </select>
     </div>
@@ -38,7 +36,6 @@
                 </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
     </div>
